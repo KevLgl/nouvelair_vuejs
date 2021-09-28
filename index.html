@@ -12,13 +12,7 @@
 
 <body>
     <div id="app">
-        <div class="container m-auto align-center">
-            <div class="mx-auto text-center">
-                <div class="text-7xl"></div>
-            </div>
-
-
-            <section class="text-gray-600 body-font">
+            <section v-show="mainContent === 'start'"  class="text-gray-600 body-font">
                 <div class="container px-5 py-24 mx-auto max-w-7x1">
                     <div class="flex flex-wrap w-full mb-4 p-4">
                         <div class="w-full mb-6 lg:mb-0">
@@ -34,8 +28,9 @@
                                 <img class="lg:h-60 xl:h-56 md:h-64 sm:h-72 xs:h-72 h-72  rounded w-full object-cover object-center mb-6"
                                     src="src/img/triptyque.png" alt="Image Size 720x400">
                                 <h2 class="text-lg text-gray-900 font-medium title-font mb-4 text-center">Volets tryptiques de pare-brise</h2>
-                                <p class="leading-relaxed text-base text-center">Sélectionnez un volet triptyque de pare-brise en
-                                    fonction de votre camping-car.</p>
+                                <p class="leading-relaxed text-base text-center">
+                                    Sélectionnez un volet triptyque de pare-brise en fonction de votre camping-car.
+                                </p>
                                 <button class="py-3 px-6 text-white rounded-lg bg-red-500 shadow-lg block md:inline-block m-5" @click=" mainContent = 'volet'">Je souhaite un volets tryptiques de pare-brise</button>
                             </div>
                         </div>
@@ -45,7 +40,9 @@
                                 <img class="lg:h-60 xl:h-56 md:h-64 sm:h-72 xs:h-72 h-72  rounded w-full object-cover object-center mb-6"
                                     src="src/img/baies.png" alt="Image Size 720x400">
                                 <h2 class="text-lg text-gray-900 font-medium title-font mb-4 text-center">Volets de baie</h2>
-                                <p class="leading-relaxed text-base text-center">Renseignez les différentes dimensions de vos baies de votre camping-car</p>
+                                <p class="leading-relaxed text-base text-center">
+                                    Renseignez les différentes dimensions de vos baies de votre camping-car
+                                </p>
                                 <button class="py-3 px-6 text-white rounded-lg bg-red-500 shadow-lg block md:inline-block m-5" @click=" mainContent = 'baies'">Je souhaite des Volets de baies</button>
                             </div>
                         </div>
@@ -55,8 +52,8 @@
                                 <img class="lg:h-60 xl:h-56 md:h-64 sm:h-72 xs:h-72 h-72  rounded w-full object-cover object-center mb-6"
                                     src="src/img/domes.png" alt="Image Size 720x400">
                                 <h2 class="text-lg text-gray-900 font-medium title-font mb-4 text-center">Volets de dômes</h2>
-                                <p class="leading-relaxed text-base text-center">Sélectionnez un volet triptyque de pare-brise en
-                                    fonction de votre camping-car.</p>
+                                <p class="leading-relaxed text-base text-center">
+                                    Sélectionnez un volet triptyque de pare-brise en fonction de votre camping-car.</p>
                                 <button class="py-3 px-6 text-white rounded-lg bg-red-500 shadow-lg block md:inline-block m-5" @click=" mainContent = 'domes'">Je souhaite des volets de dômes</button>
                             </div>
                         </div>
@@ -94,7 +91,7 @@
                 <button @click="addVoletSkydome('Volet de skydôme')">Volet de skydôme</button>
             </div>
 
-            <div>
+            <div id="selection">
                 {{ volet }}
                 <p v-for="(baie, index) in baies">
                     Baie {{ index +1 }}:{{ baie.height }} x {{ baie.width }}
@@ -125,6 +122,94 @@
                 </div>
                 {{ voletSkydome }}
             </div>
+            <button v-show="mainContent != 'start'" class="py-3 px-6 text-white rounded-lg bg-red-500 shadow-lg block md:inline-block m-5" @click=" mainContent = 'volet'">Je souhaite un volets tryptiques de pare-brise</button>
+            <button v-show="mainContent != 'start'"  class="py-3 px-6 text-white rounded-lg bg-red-500 shadow-lg block md:inline-block m-5" @click=" mainContent = 'baies'">Je souhaite des Volets de baies</button>
+            <button v-show="mainContent != 'start'"  class="py-3 px-6 text-white rounded-lg bg-red-500 shadow-lg block md:inline-block m-5" @click=" mainContent = 'domes'">Je souhaite des volets de dômes</button>
+            <div class="flex flex-wrap items-center justify-center">
+                <div class="flex-shrink-0 mx-2 mb-6 relative overflow-hidden bg-yellow-500 rounded-lg max-w-xs shadow-lg">
+                    <svg class="absolute bottom-0 left-0 mb-8" viewBox="0 0 375 283" fill="none">
+                        <rect x="159.52" y="175" width="152" height="152" rx="8" transform="rotate(-45 159.52 175)" fill="#f3c06b">
+                        </rect>
+                        <rect y="107.48" width="152" height="152" rx="8" transform="rotate(-45 0 107.48)" fill="#f3c06b">
+                        </rect>
+                    </svg>
+                    <div class="relative pt-10 px-10 flex items-center justify-center">
+                        <div class="block absolute w-48 h-48 bottom-0 left-0 -mb-24 ml-3">
+                        </div>
+                        <picture>
+                            <source srcSet="/images/object/5.webp" type="image/webp"/>
+                                <source srcSet="/images/object/5.png"/>
+                                    <img class="relative w-40" src="/images/object/5.png" alt="shopping item"/>
+                                </picture>
+                            </div>
+                            <div class="relative text-white px-6 pb-6 mt-6">
+                                <span class="block opacity-75 -mb-1">
+                                    Indoor
+                                </span>
+                                <div class="flex justify-between">
+                                    <span class="block font-semibold text-xl">
+                                        Peace Lily
+                                    </span>
+                                    <span class="bg-white rounded-full text-yellow-500 text-xs font-bold px-3 py-2 leading-none flex items-center">
+                                        $36.00
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex-shrink-0 mx-2 mb-6 sm:mb-0 relative overflow-hidden bg-blue-500 rounded-lg max-w-xs shadow-lg">
+                            <svg class="absolute bottom-0 left-0 mb-8" viewBox="0 0 375 283" fill="none">
+                                <rect x="159.52" y="175" width="152" height="152" rx="8" transform="rotate(-45 159.52 175)" fill="#6da3fb">
+                                </rect>
+                                <rect y="107.48" width="152" height="152" rx="8" transform="rotate(-45 0 107.48)" fill="#6da3fb">
+                                </rect>
+                            </svg>
+                            <div class="relative pt-10 px-10 flex items-center justify-center">
+                                <div class="block absolute w-48 h-48 bottom-0 left-0 -mb-24 ml-3">
+                                </div>
+                                <img class="relative w-40" src="/images/object/6.png" alt="shopping"/>
+                            </div>
+                            <div class="relative text-white px-6 pb-6 mt-6">
+                                <span class="block opacity-75 -mb-1">
+                                    Outdoor
+                                </span>
+                                <div class="flex justify-between">
+                                    <span class="block font-semibold text-xl">
+                                        Monstera
+                                    </span>
+                                    <span class="bg-white rounded-full text-blue-500 text-xs font-bold px-3 py-2 leading-none flex items-center">
+                                        $45.00
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex-shrink-0 mx-2 -mb-6 relative overflow-hidden bg-purple-500 rounded-lg max-w-xs shadow-lg">
+                            <svg class="absolute bottom-0 left-0 mb-8" viewBox="0 0 375 283" fill="none">
+                                <rect x="159.52" y="175" width="152" height="152" rx="8" transform="rotate(-45 159.52 175)" fill="#a17cf3">
+                                </rect>
+                                <rect y="107.48" width="152" height="152" rx="8" transform="rotate(-45 0 107.48)" fill="#a17cf3">
+                                </rect>
+                            </svg>
+                            <div class="relative pt-10 px-10 flex items-center justify-center">
+                                <div class="block absolute w-48 h-48 bottom-0 left-0 -mb-24 ml-3">
+                                </div>
+                                <img class="relative w-40" src="/images/object/7.png" alt="shopping"/>
+                            </div>
+                            <div class="relative text-white px-6 pb-6 mt-6">
+                                <span class="block opacity-75 -mb-1">
+                                    Outdoor
+                                </span>
+                                <div class="flex justify-between">
+                                    <span class="block font-semibold text-xl">
+                                        Oak Tree
+                                    </span>
+                                    <span class="bg-white rounded-full text-purple-500 text-xs font-bold px-3 py-2 leading-none flex items-center">
+                                        $68.50
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            
         </div>
     </div>
 
@@ -134,7 +219,7 @@
         const vue = new Vue({
             el: "#app",
             data: {
-                mainContent: "",
+                mainContent: "start",
                 volet: "",
                 typedBaieHeight: "",
                 typedBaieWidth: "",
