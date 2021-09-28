@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+ <head>
+   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+   <link rel="shortcut icon" type="image/ico" href="img/favicon.gif" />
+   <link rel="stylesheet" type="text/css" href="style.css" />
+   <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+   <title>Sécurité et isolation pour camping-car</title>
+ </head>
+ <body>
+    <div id="app">
+        <button @click=" mainContent = 'volet'">Volets tryptiques de pare-brise</button>
+        <button @click=" mainContent = 'baies'">Volets de baie</button>
+        <button @click=" mainContent = 'domes'">Volets de dômes</button>
+
+
+        <div v-show="mainContent === 'volet'">
+            <button @click="addVolet('Integral')">INTEGRAL</button>
+            <button @click="addVolet('Fourgons')">FOURGONS</button>
+            <button @click="addVolet('Profile')">PROFILE</button>
+            <button @click="addVolet('Capucine')">CAPUCINE</button>
+            <button @click="addVolet('Dors gabarit')">HORS GABARIT</button>
+        </div>
+
+        <!-- <div v-show="mainContent === 'baies'">
+            <input v-on:keypress.enter="addBaies" v-model="typedBaie" placeholder="input 1">
+            <input v-on:keypress.enter="addBaies" v-model="typedBaie" placeholder="input 2">
+        </div> -->
+
+        <div v-show="mainContent === 'baies'">
+            <label for="height">Height</label>
+            <input id="height" v-on:keypress.enter="addBaies" v-model="typedBaieHeight" placeholder="input 1">
+            <label for="width">Width</label>
+            <input id="width" name="width" v-on:keypress.enter="addBaies" v-model="typedBaieWidth" placeholder="input 2">
+        </div>
+
+        <div v-show="mainContent === 'domes'">
+            <button @click="addVoletDomes('Volet de dôme'); countVoletDeDome++">Volet de dôme</button>
+            <button @click="addVoletLanterneau('Volet de lanterneau'); countLanterneau++">Volet de lanterneau</button>
+            <button @click="addVoletSkydome('Volet de skydôme')">Volet de skydôme</button>
+        </div>
+
+        <div>
+            {{ volet }}
+            <p v-for="(baie, index) in baies">
+                 Baie {{ index +1 }}:{{ baie.height }} x {{ baie.width }}
+            </p>   
+            
+            <div v-if="voletDomes.length === 1">
+                <p v-for="(voletDome, index) in voletDomes">
+                    {{ index +1 }} X {{ voletDome }}
+                </p> 
+            </div>
+            <div v-else-if="voletDomes.length >= 2">
+                <p >
+                    {{ countVoletDeDome }} X Volet de dôme
+                </p> 
+            </div>
+
+
+           <div v-if="voletLanterneaus.length ===1">
+                <p v-for="(voletLanterneau, index) in voletLanterneaus">
+                    {{ index +1 }} X {{ voletLanterneau }}
+               </p> 
+            </div>
+
+               <div v-else-if="voletLanterneaus.length >= 2">
+                   <p>
+                       {{ countLanterneau }} X Volet de lanterneau 
+                   </p>
+               </div>
+                {{ voletSkydome }}  
+           </div>
+                   
+        </div>
+    </div>
+
+
+
+    <script>
+        const vue = new Vue({
+          el : "#app", 
+          data : {
+            mainContent: "",
+            volet:"",
+            typedBaieHeight:"",
+            typedBaieWidth:"",
+            baies:[],
+            voletDomes:[],
+            voletLanterneaus:[],
+            voletSkydome:"", 
+            countVoletDeDome:0,
+            countLanterneau: 0,
+
+          },
+          methods : {
+            addVolet: function (model){
+                this.volet = model
+            }, 
+            addBaies: function (){
+                if(this.typedBaieHeight != "" && this.typedBaieWidth != "" ){
+                    this.baies.push({
+                        height: this.typedBaieHeight,
+                        width: this.typedBaieWidth
+                    })
+                }
+                this.typedBaieHeight=""
+                this.typedBaieWidth=""
+            }, 
+            addVoletDomes: function (model){
+                this.voletDomes.push(model)
+            },
+            addVoletLanterneau: function (model){
+                this.voletLanterneaus.push(model)
+            },
+            addVoletSkydome: function (model){
+                this.voletSkydome = model
+            }
+          }
+      });
+      </script>
+ </body>
+</html>
