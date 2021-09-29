@@ -12,205 +12,215 @@
 
 <body>
     <div id="app">
-            <section v-show="mainContent === 'start'"  class="text-gray-600 body-font">
-                <div class="container px-5 py-24 mx-auto max-w-7x1">
-                    <div class="flex flex-wrap w-full mb-4 p-4">
-                        <div class="w-full mb-6 lg:mb-0">
-                            <h1 class="sm:text-4xl text-5xl font-medium font-bold title-font mb-2 text-gray-900">
-                                Démarrez votre devis</h1>
-                            <div class="text-3xl">Laissez-vous guider, votre devis en quelques secondes</div>
-                            <div class="h-1 w-20 bg-indigo-500 rounded"></div>
+        <!-- first part -->
+        <section v-show="mainContent === 'start'" class="text-gray-600 body-font">
+            <div class="container px-5 py-24 max-w-7x1">
+                <div class="flex flex-wrap w-full mb-4 p-4">
+                    <div class="w-full mb-6 lg:mb-0">
+                        <h1 class="sm:text-4xl text-5xl font-medium font-bold title-font mb-2 text-gray-900">
+                            Démarrez votre devis
+                        </h1>
+                        <div class="text-3xl">Laissez-vous guider, votre devis en quelques secondes</div>
+                        <div class="h-1 w-20 bg-indigo-500 rounded"></div>
+                    </div>
+                </div>
+                <div class="flex flex-wrap md:mx-12">
+                    <div class="xl:w-1/3 md:w-1/2 p-4">
+                        <div class="bg-white shadow-2xl p-6 rounded-lg flex flex-col">
+                            <img class="lg:h-60 xl:h-56 md:h-64 sm:h-72 xs:h-72 h-72  rounded w-full object-cover object-center mb-6"
+                                src="src/img/triptyque.png" alt="Image Size 720x400">
+                            <h2 class="text-lg text-gray-900 font-medium title-font mb-4 text-center">Volets tryptiques
+                                de pare-brise</h2>
+                            <p class="leading-relaxed text-base text-center">
+                                Sélectionnez un volet triptyque de pare-brise en fonction de votre camping-car.
+                            </p>
+                            <button
+                                class="py-3 px-6 text-white rounded-lg bg-red-500 shadow-lg block md:inline-block m-5"
+                                @click=" mainContent = 'volet'">Je souhaite un volets tryptiques</button>
                         </div>
                     </div>
-                    <div class="flex flex-wrap -m-4">
-                        <div class="xl:w-1/3 md:w-1/2 p-4">
-                            <div class="bg-white shadow-2xl p-6 rounded-lg flex flex-col">
-                                <img class="lg:h-60 xl:h-56 md:h-64 sm:h-72 xs:h-72 h-72  rounded w-full object-cover object-center mb-6"
-                                    src="src/img/triptyque.png" alt="Image Size 720x400">
-                                <h2 class="text-lg text-gray-900 font-medium title-font mb-4 text-center">Volets tryptiques de pare-brise</h2>
-                                <p class="leading-relaxed text-base text-center">
-                                    Sélectionnez un volet triptyque de pare-brise en fonction de votre camping-car.
-                                </p>
-                                <button class="py-3 px-6 text-white rounded-lg bg-red-500 shadow-lg block md:inline-block m-5" @click=" mainContent = 'volet'">Je souhaite un volets tryptiques de pare-brise</button>
-                            </div>
-                        </div>
 
-                        <div class="xl:w-1/3 md:w-1/2 p-4">
-                            <div class="bg-white shadow-2xl p-6 rounded-lg flex flex-col">
-                                <img class="lg:h-60 xl:h-56 md:h-64 sm:h-72 xs:h-72 h-72  rounded w-full object-cover object-center mb-6"
-                                    src="src/img/baies.png" alt="Image Size 720x400">
-                                <h2 class="text-lg text-gray-900 font-medium title-font mb-4 text-center">Volets de baie</h2>
-                                <p class="leading-relaxed text-base text-center">
-                                    Renseignez les différentes dimensions de vos baies de votre camping-car
-                                </p>
-                                <button class="py-3 px-6 text-white rounded-lg bg-red-500 shadow-lg block md:inline-block m-5" @click=" mainContent = 'baies'">Je souhaite des Volets de baies</button>
-                            </div>
+                    <div class="xl:w-1/3 md:w-1/2 p-4">
+                        <div class="bg-white shadow-2xl p-6 rounded-lg flex flex-col">
+                            <img class="lg:h-60 xl:h-56 md:h-64 sm:h-72 xs:h-72 h-72  rounded w-full object-cover object-center mb-6"
+                                src="src/img/baies.png" alt="Image Size 720x400">
+                            <h2 class="text-lg text-gray-900 font-medium title-font mb-4 text-center">Volets de baie
+                            </h2>
+                            <p class="leading-relaxed text-base text-center">
+                                Renseignez les différentes dimensions de vos baies de votre camping-car
+                            </p>
+                            <button
+                                class="py-3 px-6 text-white rounded-lg bg-red-500 shadow-lg block md:inline-block m-5"
+                                @click=" mainContent = 'baies'">Je souhaite des Volets de baies</button>
                         </div>
+                    </div>
 
-                        <div class="xl:w-1/3 md:w-1/2 p-4">
-                            <div class="bg-white shadow-2xl p-6 rounded-lg flex flex-col ">
-                                <img class="lg:h-60 xl:h-56 md:h-64 sm:h-72 xs:h-72 h-72  rounded w-full object-cover object-center mb-6"
-                                    src="src/img/domes.png" alt="Image Size 720x400">
-                                <h2 class="text-lg text-gray-900 font-medium title-font mb-4 text-center">Volets de dômes</h2>
-                                <p class="leading-relaxed text-base text-center">
-                                    Sélectionnez un volet triptyque de pare-brise en fonction de votre camping-car.</p>
-                                <button class="py-3 px-6 text-white rounded-lg bg-red-500 shadow-lg block md:inline-block m-5" @click=" mainContent = 'domes'">Je souhaite des volets de dômes</button>
-                            </div>
+                    <div class="xl:w-1/3 md:w-1/2 p-4">
+                        <div class="bg-white shadow-2xl p-6 rounded-lg flex flex-col ">
+                            <img class="lg:h-60 xl:h-56 md:h-64 sm:h-72 xs:h-72 h-72  rounded w-full object-cover object-center mb-6"
+                                src="src/img/domes.png" alt="Image Size 720x400">
+                            <h2 class="text-lg text-gray-900 font-medium title-font mb-4 text-center">Volets de dômes
+                            </h2>
+                            <p class="leading-relaxed text-base text-center">
+                                Sélectionnez un volet triptyque de pare-brise en fonction de votre camping-car.</p>
+                            <button
+                                class="py-3 px-6 text-white rounded-lg bg-red-500 shadow-lg block md:inline-block m-5"
+                                @click=" mainContent = 'domes'">Je souhaite des volets de dômes</button>
                         </div>
                     </div>
                 </div>
+            </div>
+        </section>
+        <!-- layout -->
+        <div class="grid grid-flow-col grid-cols-9 grid-rows-auto gap-4">
+            <div class="col-span-7">
+                <!-- type camping car -->
+                <section class="flex flex-wrap md:mx-12" v-show="mainContent === 'volet'">
+                    <div class="xl:w-1/3 md:w-1/2 p-4">
+                        <div class="bg-white shadow-2xl p-6 rounded-lg flex flex-col cursor-pointer"
+                            @click="addVolet('Integral')">
+                            <img class="lg:h-60 xl:h-56 md:h-64 sm:h-72 xs:h-72 h-72  rounded w-full object-cover object-center mb-6"
+                                src="src/img/domes.png" alt="Image Size 720x400">
+                            <h2 class="text-lg text-gray-900 font-medium title-font mb-4 text-center">Intégral
+                            </h2>
+                        </div>
+                    </div>
+                    <div class="xl:w-1/3 md:w-1/2 p-4">
+                        <div class="bg-white shadow-2xl p-6 rounded-lg flex flex-col cursor-pointer"
+                            @click="addVolet('Fourgons')">
+                            <img class="lg:h-60 xl:h-56 md:h-64 sm:h-72 xs:h-72 h-72  rounded w-full object-cover object-center mb-6"
+                                src="src/img/domes.png" alt="Image Size 720x400">
+                            <h2 class="text-lg text-gray-900 font-medium title-font mb-4 text-center">Fourgons
+                            </h2>
+                        </div>
+                    </div>
+                    <div class="xl:w-1/3 md:w-1/2 p-4">
+                        <div class="bg-white shadow-2xl p-6 rounded-lg flex flex-col cursor-pointer"
+                            @click="addVolet('Profile')">
+                            <img class="lg:h-60 xl:h-56 md:h-64 sm:h-72 xs:h-72 h-72  rounded w-full object-cover object-center mb-6"
+                                src="src/img/domes.png" alt="Image Size 720x400">
+                            <h2 class="text-lg text-gray-900 font-medium title-font mb-4 text-center">Profile
+                            </h2>
+                        </div>
+                    </div>
+                    <div class="xl:w-1/3 md:w-1/2 p-4">
+                        <div class="bg-white shadow-2xl p-6 rounded-lg flex flex-col cursor-pointer"
+                            @click="addVolet('Capucine')">
+                            <img class="lg:h-60 xl:h-56 md:h-64 sm:h-72 xs:h-72 h-72  rounded w-full object-cover object-center mb-6"
+                                src="src/img/domes.png" alt="Image Size 720x400">
+                            <h2 class="text-lg text-gray-900 font-medium title-font mb-4 text-center">Capucine
+                            </h2>
+                        </div>
+                    </div>
+                    <div class="xl:w-1/3 md:w-1/2 p-4">
+                        <div class="bg-white shadow-2xl p-6 rounded-lg flex flex-col cursor-pointer"
+                            @click="addVolet('Hors gabarit')">
+                            <img class="lg:h-60 xl:h-56 md:h-64 sm:h-72 xs:h-72 h-72  rounded w-full object-cover object-center mb-6"
+                                src="src/img/domes.png" alt="Image Size 720x400">
+                            <h2 class="text-lg text-gray-900 font-medium title-font mb-4 text-center">Hors gabarit
+                            </h2>
+                        </div>
+                    </div>
+                </section>
+                <!-- dimensions baies -->
+                <section v-show="mainContent === 'baies'">
+                    <div class="overflow-hidden relative flex items-center min-h-screen">
+                        <div class="absolute bg-gradient-to-tr from-yellow-400 via-red-500 to-pink-500 w-full h-1/2 z-0 top-0"
+                            style="border-bottom-left-radius: 50% 20%; border-bottom-right-radius: 50% 20%;"></div>
+                        <div class="absolute inset-x-auto w-full z-10">
+                            <div class="w-2/3 mx-auto shadow-md rounded-md p-4 bg-white">
+                                <div class="flex justify-end mb-3 text-red-600 gap-1">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1"
+                                        d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+                                    </svg>
+                                </div>
+                                <div class="flex gap-2 flex-col md:flex-row center">
+                                    <div class="relative flex-1">
+                                        <input id="height" 
+                                                v-on:keypress.enter="addBaies" 
+                                                v-model="typedBaieHeight" 
+                                                name="height" 
+                                                type="text"
+                                                class="peer h-10 w-full border border-1.5 rounded-md border-gray-300 text-gray-900 placeholder-transparent focus:outline-none focus:border-red-600 focus:border-2 p-3"
+                                                placeholder="quelquechose" />
+                                        <label for="height"
+                                            class="absolute left-2 px-1 -top-2.5 bg-white text-red-600 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-900 peer-placeholder-shown:top-2 peer-focus:-top-2.5 peer-focus:text-red-600 peer-focus:text-sm">
+                                            Largeur :
+                                        </label>
+                                    </div>
+                                    <div class="relative flex-1">
+                                        <input id="width" 
+                                                name="width" 
+                                                type="text"
+                                                v-on:keypress.enter="addBaies" 
+                                                v-model="typedBaieWidth"
+                                                class="peer h-10 w-full border border-1.5 rounded-md border-gray-300 text-gray-900 placeholder-transparent focus:outline-none focus:border-red-600 focus:border-2 p-3"
+                                                placeholder="quelquechose" />
+                                        <label for="width"
+                                                class="absolute left-2 px-1 -top-2.5 bg-white text-red-600 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-900 peer-placeholder-shown:top-2 peer-focus:-top-2.5 peer-focus:text-red-600 peer-focus:text-sm">
+                                            Hauteur:
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex justify-center mt-6">
+                                <!-- TODO: FAIRE LA FUNCT ONLICK   -->
+                                <button
+                                    class="bg-red-900 text-white font-extrabold text-lg rounded-full px-6 py-3">Rechercher
+                                </button>
+                            </div>
+                        </div>
+                    </div>
             </section>
-
-
-
-            <div v-show="mainContent === 'volet'">
-                <button class="text-yellow-600" @click="addVolet('Integral')">INTEGRAL</button>
-                <button @click="addVolet('Fourgons')">FOURGONS</button>
-                <button @click="addVolet('Profile')">PROFILE</button>
-                <button @click="addVolet('Capucine')">CAPUCINE</button>
-                <button @click="addVolet('Dors gabarit')">HORS GABARIT</button>
-            </div>
-
-            <!-- <div v-show="mainContent === 'baies'">
-            <input v-on:keypress.enter="addBaies" v-model="typedBaie" placeholder="input 1">
-            <input v-on:keypress.enter="addBaies" v-model="typedBaie" placeholder="input 2">
-            </div> -->
-
-            <div v-show="mainContent === 'baies'">
-                <label for="height">Height</label>
-                <input id="height" v-on:keypress.enter="addBaies" v-model="typedBaieHeight" placeholder="input 1">
-                <label for="width">Width</label>
-                <input id="width" name="width" v-on:keypress.enter="addBaies" v-model="typedBaieWidth"
-                    placeholder="input 2">
-            </div>
-
-            <div v-show="mainContent === 'domes'">
+            <!-- type dôme -->
+            <section v-show="mainContent === 'domes'">
                 <button @click="addVoletDomes('Volet de dôme'); countVoletDeDome++">Volet de dôme</button>
                 <button @click="addVoletLanterneau('Volet de lanterneau'); countLanterneau++">Volet de
                     lanterneau</button>
                 <button @click="addVoletSkydome('Volet de skydôme')">Volet de skydôme</button>
-            </div>
-
-            <div id="selection">
-                {{ volet }}
-                <p v-for="(baie, index) in baies">
-                    Baie {{ index +1 }}:{{ baie.height }} x {{ baie.width }}
-                </p>
-
-                <div v-if="voletDomes.length === 1">
-                    <p v-for="(voletDome, index) in voletDomes">
-                        {{ index +1 }} X {{ voletDome }}
-                    </p>
-                </div>
-                <div v-else-if="voletDomes.length >= 2">
-                    <p>
-                        {{ countVoletDeDome }} X Volet de dôme
-                    </p>
-                </div>
-
-
-                <div v-if="voletLanterneaus.length ===1">
-                    <p v-for="(voletLanterneau, index) in voletLanterneaus">
-                        {{ index +1 }} X {{ voletLanterneau }}
-                    </p>
-                </div>
-
-                <div v-else-if="voletLanterneaus.length >= 2">
-                    <p>
-                        {{ countLanterneau }} X Volet de lanterneau
-                    </p>
-                </div>
-                {{ voletSkydome }}
-            </div>
-            <button v-show="mainContent != 'start'" class="py-3 px-6 text-white rounded-lg bg-red-500 shadow-lg block md:inline-block m-5" @click=" mainContent = 'volet'">Je souhaite un volets tryptiques de pare-brise</button>
-            <button v-show="mainContent != 'start'"  class="py-3 px-6 text-white rounded-lg bg-red-500 shadow-lg block md:inline-block m-5" @click=" mainContent = 'baies'">Je souhaite des Volets de baies</button>
-            <button v-show="mainContent != 'start'"  class="py-3 px-6 text-white rounded-lg bg-red-500 shadow-lg block md:inline-block m-5" @click=" mainContent = 'domes'">Je souhaite des volets de dômes</button>
-            <div class="flex flex-wrap items-center justify-center">
-                <div class="flex-shrink-0 mx-2 mb-6 relative overflow-hidden bg-yellow-500 rounded-lg max-w-xs shadow-lg">
-                    <svg class="absolute bottom-0 left-0 mb-8" viewBox="0 0 375 283" fill="none">
-                        <rect x="159.52" y="175" width="152" height="152" rx="8" transform="rotate(-45 159.52 175)" fill="#f3c06b">
-                        </rect>
-                        <rect y="107.48" width="152" height="152" rx="8" transform="rotate(-45 0 107.48)" fill="#f3c06b">
-                        </rect>
-                    </svg>
-                    <div class="relative pt-10 px-10 flex items-center justify-center">
-                        <div class="block absolute w-48 h-48 bottom-0 left-0 -mb-24 ml-3">
-                        </div>
-                        <picture>
-                            <source srcSet="/images/object/5.webp" type="image/webp"/>
-                                <source srcSet="/images/object/5.png"/>
-                                    <img class="relative w-40" src="/images/object/5.png" alt="shopping item"/>
-                                </picture>
-                            </div>
-                            <div class="relative text-white px-6 pb-6 mt-6">
-                                <span class="block opacity-75 -mb-1">
-                                    Indoor
-                                </span>
-                                <div class="flex justify-between">
-                                    <span class="block font-semibold text-xl">
-                                        Peace Lily
-                                    </span>
-                                    <span class="bg-white rounded-full text-yellow-500 text-xs font-bold px-3 py-2 leading-none flex items-center">
-                                        $36.00
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="flex-shrink-0 mx-2 mb-6 sm:mb-0 relative overflow-hidden bg-blue-500 rounded-lg max-w-xs shadow-lg">
-                            <svg class="absolute bottom-0 left-0 mb-8" viewBox="0 0 375 283" fill="none">
-                                <rect x="159.52" y="175" width="152" height="152" rx="8" transform="rotate(-45 159.52 175)" fill="#6da3fb">
-                                </rect>
-                                <rect y="107.48" width="152" height="152" rx="8" transform="rotate(-45 0 107.48)" fill="#6da3fb">
-                                </rect>
-                            </svg>
-                            <div class="relative pt-10 px-10 flex items-center justify-center">
-                                <div class="block absolute w-48 h-48 bottom-0 left-0 -mb-24 ml-3">
-                                </div>
-                                <img class="relative w-40" src="/images/object/6.png" alt="shopping"/>
-                            </div>
-                            <div class="relative text-white px-6 pb-6 mt-6">
-                                <span class="block opacity-75 -mb-1">
-                                    Outdoor
-                                </span>
-                                <div class="flex justify-between">
-                                    <span class="block font-semibold text-xl">
-                                        Monstera
-                                    </span>
-                                    <span class="bg-white rounded-full text-blue-500 text-xs font-bold px-3 py-2 leading-none flex items-center">
-                                        $45.00
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="flex-shrink-0 mx-2 -mb-6 relative overflow-hidden bg-purple-500 rounded-lg max-w-xs shadow-lg">
-                            <svg class="absolute bottom-0 left-0 mb-8" viewBox="0 0 375 283" fill="none">
-                                <rect x="159.52" y="175" width="152" height="152" rx="8" transform="rotate(-45 159.52 175)" fill="#a17cf3">
-                                </rect>
-                                <rect y="107.48" width="152" height="152" rx="8" transform="rotate(-45 0 107.48)" fill="#a17cf3">
-                                </rect>
-                            </svg>
-                            <div class="relative pt-10 px-10 flex items-center justify-center">
-                                <div class="block absolute w-48 h-48 bottom-0 left-0 -mb-24 ml-3">
-                                </div>
-                                <img class="relative w-40" src="/images/object/7.png" alt="shopping"/>
-                            </div>
-                            <div class="relative text-white px-6 pb-6 mt-6">
-                                <span class="block opacity-75 -mb-1">
-                                    Outdoor
-                                </span>
-                                <div class="flex justify-between">
-                                    <span class="block font-semibold text-xl">
-                                        Oak Tree
-                                    </span>
-                                    <span class="bg-white rounded-full text-purple-500 text-xs font-bold px-3 py-2 leading-none flex items-center">
-                                        $68.50
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-            
+            </section>
         </div>
+        <!-- panier -->
+        <div id="selection" class="col-span-2">
+            {{ volet }}
+            <p v-for="(baie, index) in baies">
+                Baie {{ index +1 }}:{{ baie.height }} x {{ baie.width }}
+            </p>
+            <div v-if="voletDomes.length === 1">
+                <p v-for="(voletDome, index) in voletDomes">
+                    {{ index +1 }} X {{ voletDome }}
+                </p>
+            </div>
+            <div v-else-if="voletDomes.length >= 2">
+                <p>
+                    {{ countVoletDeDome }} X Volet de dôme
+                </p>
+            </div>
+            <div v-if="voletLanterneaus.length ===1">
+                <p v-for="(voletLanterneau, index) in voletLanterneaus">
+                    {{ index +1 }} X {{ voletLanterneau }}
+                </p>
+            </div>
+            <div v-else-if="voletLanterneaus.length >= 2">
+                <p>
+                    {{ countLanterneau }} X Volet de lanterneau
+                </p>
+            </div>
+            {{ voletSkydome }}
+
+            <div class="flex flex-col">
+                <button v-show="mainContent != 'start'"
+                    class="py-3 px-6 text-white rounded-lg bg-red-500 shadow-lg block md:inline-block m-5"
+                    @click=" mainContent = 'volet'">Je souhaite un volets tryptiques de pare-brise</button>
+                <button v-show="mainContent != 'start'"
+                    class="py-3 px-6 text-white rounded-lg bg-red-500 shadow-lg block md:inline-block m-5"
+                    @click=" mainContent = 'baies'">Je souhaite des Volets de baies</button>
+                <button v-show="mainContent != 'start'"
+                    class="py-3 px-6 text-white rounded-lg bg-red-500 shadow-lg block md:inline-block m-5"
+                    @click=" mainContent = 'domes'">Je souhaite des volets de dômes</button>
+            </div>
+        </div>
+    </div>
     </div>
 
 
