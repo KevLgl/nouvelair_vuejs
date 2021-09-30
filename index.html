@@ -216,6 +216,76 @@
                         </div>
                     </div>
                 </div>
+                <!-- card-total-product 3 -->
+                <div v-show="totalVolets.length != 0 " class="h-screen w-full bg-gray-50 flex justify-center items-center">
+                    <div class="
+                                h-auto
+                                mx-4
+                                w-5/6
+                                bg-blue-400
+                                rounded-3xl
+                                shadow-md
+                                sm:w-80 sm:mx-0
+                            ">
+                        <div class="h-1/2 w-full flex justify-between items-baseline px-3 py-5">
+                            <h1 class="text-white text-center">Volets de dômes</h1>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="white">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1"
+                                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                            </svg>
+                        </div>
+
+                        <div class="
+                                bg-white
+                                h-auto
+                                w-full
+                                rounded-3xl
+                                flex flex-col
+                                justify-around
+                                items-center
+                                ">
+                            <div class="w-full h-1/2 flex justify-between items-center px-3 pt-2">
+                                <div class="flex flex-col justify-center items-center">
+                                    <h1 class="text-gray-500 text-xs">Produits</h1>
+                                    <h1 class="text-gray-600 text-sm">{{ totalVolets.length }}</h1>
+                                </div>
+                                <div class="flex flex-col justify-center items-center">
+                                    <h1 class="text-gray-500 text-xs">Prix</h1>
+                                    <h1 class="text-gray-600 text-sm">300€</h1>
+                                </div>
+                            </div>
+                            <div class="w-full h-1/2 flex flex-col justify-center items-center">
+                                <div class="text-gray-700 font-bold">
+                                        <div v-if="voletDomes.length === 1">
+                                            <p class="text-gray-700 font-bold" v-for="(voletDome, index) in voletDomes">
+                                                {{ index +1 }} X {{ voletDome }}
+                                            </p>
+                                        </div>
+                                        <div v-else-if="voletDomes.length >= 2">
+                                            <p class="text-gray-700 font-bold">
+                                                {{ countVoletDeDome }} X Volet de dôme
+                                            </p>
+                                        </div>
+                                        <div v-if="voletLanterneaus.length ===1">
+                                            <p class="text-gray-700 font-bold" v-for="(voletLanterneau, index) in voletLanterneaus">
+                                                {{ index +1 }} X {{ voletLanterneau }}
+                                            </p>
+                                        </div>
+                                        <div v-else-if="voletLanterneaus.length >= 2">
+                                            <p class="text-gray-700 font-bold">
+                                                {{ countLanterneau }} X Volet de lanterneau
+                                            </p>
+                                        </div>
+                                        <div v-if="voletSkydome != ''">
+                                            <p class="text-gray-700 font-bold">
+                                                1 X {{ voletSkydome }}
+                                            </p>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -237,6 +307,7 @@
                 voletDomes: [],
                 voletLanterneaus: [],
                 voletSkydome: "",
+                totalVolets:[],
                 countVoletBaie: 0,
                 countVoletDeDome: 0,
                 countLanterneau: 0,
@@ -288,24 +359,20 @@
                     this.typedBaieWidth = ""
                     this.countVoletBaie++
                 },
-                addVoletDomes: function (model) {
-                    this.voletDomes.push(model)
-                },
-                addVoletLanterneau: function (model) {
-                    this.voletLanterneaus.push(model)
-                },
-                addVoletSkydome: function (model) {
-                    this.voletSkydome = model
-                },
                 addItem: function (item) {
                     if (item.fields.nom === "Volet de dôme") {
                         this.countVoletDeDome++,
                             this.voletDomes.push(item.fields.nom)
+                            this.totalVolets.push(item.fields.nom)
                     } else if (item.fields.nom === "Volet de lanterneau") {
                         this.countLanterneau++,
                             this.voletLanterneaus.push(item.fields.nom)
+                            this.totalVolets.push(item.fields.nom)
                     } else {
                         this.voletSkydome = item.fields.nom
+                        if(this.totalVolets == ""){
+                            this.totalVolets.push(item.fields.nom)
+                        }
                     }
                 }
             },
