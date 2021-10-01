@@ -53,6 +53,34 @@
                         </section>
                         <!-- dimensions baies -->
                         <section v-show="mainContent === 'baies'">
+                            <!-- alert success -->
+                            <div v-show="displayAlertSucess" class=" z-10 absolute top-0 bg-green-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md" role="alert">
+                                <div class="flex">
+                                    <div class="py-1">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" />
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <p class="font-bold">Votre baie à été ajoutée a votre selection</p>
+                                        <p class="text-sm">Vous pouvez modifier votre commande directement dans votre panier</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- alert danger -->
+                            <div v-show="displayAlertDanger" class=" z-10 absolute top-0 bg-red-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md" role="alert">
+                                <div class="flex">
+                                    <div class="py-1">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636" />
+                                        </svg>    
+                                    </div>
+                                    <div>
+                                        <p class="font-bold">Votre baie n'a pas été ajoutée a votre selection</p>
+                                        <p class="text-sm">Veuillez remplir les 2 champs (avec des chiffres uniquement)</p>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="overflow-hidden relative flex items-center min-h-screen">
                                 <div class="absolute bg-gradient-to-tr from-yellow-400 via-red-500 to-pink-500 w-full h-1/2 z-0 top-0"
                                     style="border-top-right-radius: 20%; border-bottom-left-radius: 50% 20%; border-bottom-right-radius: 50% 20%;"></div>
@@ -69,7 +97,7 @@
                                         <div class="flex gap-2 flex-col md:flex-row center">
                                             <div class="relative flex-1">
                                                 <input id="height" v-on:keypress.enter="addBaies" v-model="typedBaieHeight"
-                                                    name="height" type="text"
+                                                    name="height" type="number"
                                                     class="peer h-10 w-full border border-1.5 rounded-md border-gray-300 text-gray-900 placeholder-transparent focus:outline-none focus:border-red-600 focus:border-2 p-3"
                                                     placeholder="quelquechose" />
                                                 <label for="height"
@@ -78,7 +106,7 @@
                                                 </label>
                                             </div>
                                             <div class="relative flex-1">
-                                                <input id="width" name="width" type="text" v-on:keypress.enter="addBaies"
+                                                <input id="width" name="width" type="number" v-on:keypress.enter="addBaies"
                                                     v-model="typedBaieWidth"
                                                     class="peer h-10 w-full border border-1.5 rounded-md border-gray-300 text-gray-900 placeholder-transparent focus:outline-none focus:border-red-600 focus:border-2 p-3"
                                                     placeholder="quelquechose" />
@@ -146,17 +174,17 @@
                             </section>
                         </section>
                         <section  v-show="mainContent === 'recap'" class="flex flex-wrap content-center h-screen">
-                            <div class='max-w-xs w-full bg-white shadow-md rounded-lg overflow-hidden mx-auto'>
+                            <div class='max-w-lg w-full bg-white shadow-md rounded-lg overflow-hidden mx-auto'>
                                     <div class='h-5 w-full bg-gray-800'></div>
                                     <div class='px-2 py-3'>
                                         <div class='w-full text-center mb-3'>
                                             <img class='w-24 h-24 inline-block object-cover rounded-full' alt='CompanyIcon' src='src/img/baies.png'>
                                         </div>
                                         <div class='w-full text-center border-t mb-1 pb-3'>
-                                            <h1 class="mt-2 text-xl font-bold"><span class="uppercase">{{nom}}</span>{{prenom}}</h1>
-                                            <p class="my-1 text-xs font-bold">{{email}}</p>
-                                            <p class="my-1 text-xs font-bold">{{tel}}</p>
-                                            <p class="my-1 text-xs font-bold">{{marque}}</p>
+                                            <h1 class="mt-2 text-xl font-bold"><span class="uppercase"> Nom: {{nom}} </span>Prenom: {{prenom}}</h1>
+                                            <p class="my-1 text-xs font-bold">Email: {{email}}</p>
+                                            <p class="my-1 text-xs font-bold">Telephone: {{tel}}</p>
+                                            <p class="my-1 text-xs font-bold">Marque camping-car: {{marque}}</p>
                                         </div>
                                         <table class="w-full border">
                                             <thead>
@@ -321,9 +349,9 @@
                                 </div>
                             </div>
                             <div class="flex flex-wrap justify-center m-2">
-                                <button class="inline-block rounded-full bg-red-500 hover:bg-red-600 text-white font-semibold px-2 py-1 m-2 text-xs font-normal" @click=" mainContent = 'volet'">+ J'ajouter des volets ?</button>
-                                <button class="rounded-full bg-red-500 hover:bg-red-600 text-white font-semibold px-2 py-1 m-2 text-xs font-normal" @click=" mainContent = 'baies'">+ J'ajouter des baies ?</button>
-                                <button class="rounded-full bg-red-500 hover:bg-red-600 text-white font-semibold px-2 py-1 m-2 text-xs font-normal" @click=" mainContent = 'domes'">+ J'ajouter des domes ?</button>
+                                <button v-show="mainContent != 'volet'" class="inline-block rounded-full bg-red-500 hover:bg-red-600 text-white font-semibold px-2 py-1 m-2 text-xs font-normal" @click=" mainContent = 'volet'">+ J'ajouter des volets ?</button>
+                                <button v-show="mainContent != 'baies'" class="rounded-full bg-red-500 hover:bg-red-600 text-white font-semibold px-2 py-1 m-2 text-xs font-normal" @click=" mainContent = 'baies'">+ J'ajouter des baies ?</button>
+                                <button v-show="mainContent != 'domes'" class="rounded-full bg-red-500 hover:bg-red-600 text-white font-semibold px-2 py-1 m-2 text-xs font-normal" @click=" mainContent = 'domes'">+ J'ajouter des domes ?</button>
                             </div>
                         </div>
                     </div>
@@ -360,6 +388,8 @@
                 tel: "",
                 marque: "",
                 textarea: "",
+                displayAlertSucess:false,
+                displayAlertDanger:false,
                 productsCardContent: [
                     {
                         title: "Volets tryptiques de pare-brise",
@@ -390,6 +420,18 @@
 
             },
             methods: {
+                hideAlertSucess: function() {
+                    this.displayAlertSucess = true;
+                    setTimeout(() => {
+                    this.displayAlertSucess = false
+                    }, 2000)
+                },
+                hideAlertDanger: function() {
+                    this.displayAlertDanger = true;
+                    setTimeout(() => {
+                    this.displayAlertDanger = false
+                    }, 4000)
+                },
                 addVolet: function (model) {
                     this.volet = model
                 },
@@ -403,6 +445,9 @@
                         this.typedBaieTotalSize = this.typedBaieWidth * this.typedBaieHeight;
                         this.typedTotalPrice = this.typedBaieTotalSize * this.apiPriceBaie.tarif;
                         this.globalTotalPrice.push(this.typedTotalPrice);
+                        this.hideAlertSucess();
+                    }else{
+                        this.hideAlertDanger();
                     }
                     this.typedBaieHeight = ""
                     this.typedBaieWidth = ""
