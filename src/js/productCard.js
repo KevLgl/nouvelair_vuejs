@@ -15,7 +15,7 @@ Vue.component('product-card', {
                         {{ text }}
                         </p>
                         <button
-                            class="py-3 px-6 text-white rounded-lg bg-indigo-500 shadow-lg block md:inline-block m-5 hover:bg-indigo-700 font-bold"
+                            class="py-3 px-6 text-white rounded-lg bg-red-500 shadow-lg block md:inline-block m-5 hover:bg-red-600 font-bold"
                             v-on:click="actionButton(clickmaincontent)">{{ buttoncontent }}
                         </button>
                     </div>

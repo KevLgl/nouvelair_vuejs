@@ -27,11 +27,11 @@
                                     Démarrez votre devis
                                 </h1>
                                 <div class="text-2xl">Laissez-vous guider, votre devis en quelques secondes</div>
-                                <div class="h-1 w-20 bg-indigo-500 rounded"></div>
+                                <div class="h-1 w-20 bg-red-500 rounded"></div>
                             </div>
                         </div>
 
-                        <div class="flex flex-wrap">
+                        <div class="flex flex-wrap content-center h-screen">
                             <!-- TODO - CALCULER LE PRIX DE LA CARD DANS LE SELECTION SECTION -->
                             <product-card v-for="productCardContent in productsCardContent" :title="productCardContent.title"
                                 :imgsrc="productCardContent.imgsrc" :text="productCardContent.text"
@@ -43,9 +43,9 @@
                 </section>
                 <!-- layout -->
                 <div class="grid grid-flow-col grid-cols-12 grid-rows-auto gap-2">
-                    <div class="col-span-9">
+                    <div class="col-span-8">
                         <!-- type camping car -->
-                        <section class="flex flex-wrap md:mx-12" v-show="mainContent === 'volet'">
+                        <section class="flex flex-wrap content-center h-screen md:mx-12" v-show="mainContent === 'volet'">
                             <type-campingcar :key="index" v-for="(tryptique, index) in apiAllTryptique"
                                 :img="tryptique.fields.images.image" :title="tryptique.fields.nom"
                                 v-on:add-volet="addVolet(tryptique.fields.nom)">
@@ -91,7 +91,7 @@
                                     </div>
                                     <div class="flex justify-center mt-6">
                                         <!-- TODO: FAIRE LA FUNCT ONLICK   -->
-                                        <button class="bg-red-500 hover:bg-red-700 text-white font-extrabold text-lg rounded-full px-6 py-3"
+                                        <button class="bg-red-500 hover:bg-red-600 text-white font-extrabold text-lg rounded-full px-6 py-3"
                                             @click="addBaies">Ajouter une baie
                                         </button>
                                     </div>
@@ -106,98 +106,65 @@
                         </section>
                     </div>
                     <!-- panier -->
-                    <div v-show="mainContent !== 'start'" id="selection" class="col-span-3 flex flex-col justify-center align-middle">
+                    <div v-show="mainContent !== 'start'" id="selection" class="col-span-4 flex flex-col justify-center align-middle">
                         <div class="card shadow-xl h-auto m-4">
                             <div class="card-header mx-auto">
-                                <h1 class="card-header-title">Votre panier</h1>
+                                <div class="card-header-title flex justify-between">
+                                    <h1 class="font-bold">Votre panier</h1>
+                                    <button class="is-small button is-success is-outlined font-bold">Recapitulatif</button>
+                                </div>
                             </div>
                             <!-- card-total-product 1 -->
-                            <div v-show="volet != ''" class="w-full flex mt-2">
-                                <div class="
-                                    h-56
-                                    mx-4
-                                    w-5/6
-                                    bg-blue-400
-                                    rounded-3xl
-                                    shadow-md
-                                    sm:w-80 sm:mx-0
-                                ">
-                                    <div class="h-1/2 w-full flex justify-between items-baseline px-3 py-3">
-                                        <h1 class="text-white text-center">Volets tryptiques de pare-brise</h1>
-                                            <path
-                                                stroke-linecap="round"
-                                                stroke-linejoin="round"
-                                                stroke-width="1"
-                                                d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
-                                            />
-                                        </svg>
-                                    </div>
-
-                                    <div class="
-                                    bg-white
-                                    h-1/2
-                                    w-full
-                                    rounded-3xl
-                                    flex flex-col
-                                    justify-around
-                                    items-center
-                                    ">
-                                        <div class="w-full h-1/2 flex justify-between items-center px-3 pt-2">
-                                            <div class="flex flex-col justify-center items-center">
-                                                <h1 class="text-gray-500 text-xs">Produits</h1>
-                                                <h1 class="text-gray-600 text-sm">1</h1>
-                                            </div>
+                            <div v-show="volet != ''" class="w-full flex justify-center my-3">
+                                <div class="card w-4/5">
+                                    <div class="card-header flex alignt-middle">
+                                        <div class="card-header-title bg-red-500">
+                                            <h1 class="font-bold text-white">Volets tryptiques de pare-brise</h1>
                                         </div>
-                                        <div class="w-full h-1/2 flex flex-col justify-center items-center">
-                                        <h1 class="text-gray-700 font-bold">{{volet}}</h1>
+                                    </div>
+                                    <div class="card-content py-3">
+                                        <div>
+                                            <div class="w-full h-1/2 flex flex-col justify-center items-center">
+                                            <h1 class="text-gray-700 font-bold">{{volet}}</h1>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <!-- card-total-product 2 -->
-                            <div v-show="baies.length != 0 " class="h-screen w-full flex justify-center items-center">
-                                <div class="
-                                            h-auto
-                                            mx-4
-                                            w-5/6
-                                            bg-blue-400
-                                            rounded-3xl
-                                            shadow-md
-                                            sm:w-80 sm:mx-0
-                                        ">
-                                    <div class="h-1/2 w-full flex justify-between items-baseline px-3 py-5">
-                                        <h1 class="text-white text-center">Volets de baie</h1>
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="white">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1"
-                                                d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                                        </svg>
+                            <div v-show="baies.length != 0 " class="w-full flex justify-center my-3">
+                                <div class="card w-4/5">
+                                    <div class="card-header flex alignt-middle">
+                                        <div class="card-header-title bg-red-500">
+                                            <h1 class="font-bold text-white">Volets de baie</h1>
+                                        </div>
                                     </div>
-
-                                    <div class="
-                                            bg-white
-                                            h-auto
-                                            w-full
-                                            rounded-3xl
-                                            flex flex-col
-                                            justify-around
-                                            items-center
-                                            ">
-                                        <div class="w-full h-1/2 flex justify-between items-center px-3 pt-2">
-                                            <div class="flex flex-col justify-center items-center">
-                                                <h1 class="text-gray-500 text-xs">Produits</h1>
-                                                <h1 class="text-gray-600 text-sm">{{countVoletBaie}}</h1>
-                                            </div>
-                                            <div class="flex flex-col justify-center items-center">
-                                                <h1 class="text-gray-500 text-xs">Prix</h1>
-                                                <h1 class="text-gray-600 text-sm">{{calculateTotalPrice}}€</h1>
+                                    <div class="card-content py-3">
+                                        <div>
+                                            <div class="w-full h-1/2 flex flex-col justify-center items-center">
+                                                <div class="text-gray-700 font-bold">
+                                                    <div class="pb-3" v-for="(baie, index) in baies">
+                                                        Baie {{ index +1 }} = L{{ baie.height }}cm <span class="font-extrabold">X</span> H{{ baie.width
+                                                        }}cm
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="w-full h-1/2 flex flex-col justify-center items-center">
-                                            <div class="text-gray-700 font-bold">
-                                                <div class="pb-3" v-for="(baie, index) in baies">
-                                                    Baie {{ index +1 }} = L{{ baie.height }}cm <span class="font-extrabold">X</span> H{{ baie.width
-                                                    }}cm
-                                                    <p class="text-sm text-gray-500 text-right">Prix unitaire = {{ baie.totalPrice }}€</p>
+                                    </div>
+                                    <div class="card-footer">
+                                        <div class="card-footer-item">
+                                            <div class="w-full h-1/2 flex justify-between items-center px-3 pt-2">
+                                                <div class="flex flex-col justify-center items-center">
+                                                    <h1 class="text-xs font-normal">Produits</h1>
+                                                    <h1 class="text-xs  font-bold">{{countVoletBaie}}</h1>
+                                                </div>
+                                                <div class="flex flex-col justify-center items-center">
+                                                    <p class="text-xs font-normal">Prix Unitaire</p>
+                                                    <p class="text-xs  font-bold">{{ apiPriceBaie.tarif }}€</p>
+                                                </div>
+                                                <div class="flex flex-col justify-center items-center">
+                                                    <p class="text-xs font-normal">Prix total</p>
+                                                    <p class="text-xs  font-bold">{{calculateTotalPrice}}€</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -205,45 +172,17 @@
                                 </div>
                             </div>
                             <!-- card-total-product 3 -->
-                            <div v-show="totalVolets.length != 0 " class="h-screen w-full flex justify-center items-center">
-                                <div class="
-                                            h-auto
-                                            mx-4
-                                            w-5/6
-                                            bg-blue-400
-                                            rounded-3xl
-                                            shadow-md
-                                            sm:w-80 sm:mx-0
-                                        ">
-                                    <div class="h-1/2 w-full flex justify-between items-baseline px-3 py-5">
-                                        <h1 class="text-white text-center">Volets de dômes</h1>
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="white">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1"
-                                                d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                                        </svg>
-                                    </div>
-
-                                    <div class="
-                                            bg-white
-                                            h-auto
-                                            w-full
-                                            rounded-3xl
-                                            flex flex-col
-                                            justify-around
-                                            items-center
-                                            ">
-                                        <div class="w-full h-1/2 flex justify-between items-center px-3 pt-2">
-                                            <div class="flex flex-col justify-center items-center">
-                                                <h1 class="text-gray-500 text-xs">Produits</h1>
-                                                <h1 class="text-gray-600 text-sm">{{ totalVolets.length }}</h1>
-                                            </div>
-                                            <div class="flex flex-col justify-center items-center">
-                                                <h1 class="text-gray-500 text-xs">Prix</h1>
-                                                <h1 class="text-gray-600 text-sm">300€</h1>
-                                            </div>
+                            <div v-show="totalVolets.length != 0 " class="w-full flex justify-center my-3">
+                                <div class="card w-4/5">
+                                    <div class="card-header flex alignt-middle">
+                                        <div class="card-header-title bg-red-500">
+                                            <h1 class="font-bold text-white">Volets de dômes</h1>
                                         </div>
-                                        <div class="w-full h-1/2 flex flex-col justify-center items-center">
-                                            <div class="text-gray-700 font-bold">
+                                    </div>
+                                    <div class="card-content py-3">
+                                        <div>
+                                            <div class="w-full h-1/2 flex flex-col justify-center items-center">
+                                                <div class="text-gray-700 font-bold">
                                                     <div v-if="voletDomes.length === 1">
                                                         <p class="text-gray-700 font-bold" v-for="(voletDome, index) in voletDomes">
                                                             {{ index +1 }} X {{ voletDome }}
@@ -269,10 +208,21 @@
                                                             1 X {{ voletSkydome }}
                                                         </p>
                                                     </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="card-footer">
+                                        <div class="card-footer-item">
+                                            <p class="text-xs font-normal">Produits : <span class="font-bold"> {{ totalVolets.length }}</span></p>
+                                        </div>
+                                    </div>
                                 </div>
+                            </div>
+                            <div class="flex flex-wrap justify-center m-2">
+                                <button class="inline-block rounded-full bg-red-500 hover:bg-red-600 text-white font-semibold px-2 py-1 m-2 text-xs font-normal" @click=" mainContent = 'volet'">+ J'ajouter des volets ?</button>
+                                <button class="rounded-full bg-red-500 hover:bg-red-600 text-white font-semibold px-2 py-1 m-2 text-xs font-normal" @click=" mainContent = 'baies'">+ J'ajouter des baies ?</button>
+                                <button class="rounded-full bg-red-500 hover:bg-red-600 text-white font-semibold px-2 py-1 m-2 text-xs font-normal" @click=" mainContent = 'domes'">+ J'ajouter des domes ?</button>
                             </div>
                         </div>
                     </div>
