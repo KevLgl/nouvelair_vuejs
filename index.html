@@ -12,7 +12,7 @@
     <!-- import components -->
     <script src="src/js/productCard.js"></script>
     <script src="src/js/typeCampingCar.js"></script>
-    <title>Sécurité et isolation pour camping-car</title>
+    <title>Nouvelair</title>
 </head>
 
 <body>
@@ -105,47 +105,108 @@
                             </type-campingcar>
                         </section>
                         <!-- FORM -->
-                        <section v-show="mainContent === 'form'" class="mx-8 max-w-4xl p-6 mx-auto bg-indigo-600 rounded-md shadow-md dark:bg-gray-800 mt-20">
-                            <h1 class="text-xl font-bold text-white dark:text-white">Veuillez renseigner les informations pour recevoir votre devis</h1>
-                            <form>
-                                <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
-                                    <div>
-                                        <label class="text-white dark:text-gray-200" for="username">Nom</label>
-                                        <input id="username" type="text" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
-                                    </div>
-                                    <div>
-                                        <label class="text-white dark:text-gray-200" for="username">Prénom</label>
-                                        <input id="userfirstname" type="text" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                        <section  v-show="mainContent === 'form'" class="flex flex-wrap content-center h-screen">
+                            <section class="mx-8 max-w-4xl p-6 mx-auto bg-indigo-600 rounded-md shadow-md dark:bg-gray-800 mt-20">
+                                <h1 class="text-xl font-bold text-white dark:text-white">Veuillez renseigner les informations pour recevoir votre devis</h1>
+                                <form>
+                                    <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
+                                        <div>
+                                            <label class="text-white dark:text-gray-200" for="username">Nom</label>
+                                            <input v-model="nom" id="username" type="text" required class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                                        </div>
+                                        <div>
+                                            <label class="text-white dark:text-gray-200" for="username">Prénom</label>
+                                            <input v-model="prenom" id="userfirstname" required type="text" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                                        </div>
+
+                                        <div>
+                                            <label class="text-white dark:text-gray-200" for="emailAddress">Adresse e-mail</label>
+                                            <input v-model="email" id="emailAddress" required type="email" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                                        </div>
+                                        <div>
+                                            <label class="text-white dark:text-gray-200" for="emailAddress">Numéro de telephone</label>
+                                            <input v-model="tel" id="phonenumber" required type="number" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                                        </div>
+
+                                        <div>
+                                            <label class="text-white dark:text-gray-200" for="password">Marque du camping car</label>
+                                            <input v-model="marque" id="marque" type="text" required class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                                        </div>
+
+                                        <div>
+                                            <label class="text-white dark:text-gray-200" for="passwordConfirmation">Indiquez votre demande</label>
+                                            <textarea v-model="textarea" id="textarea" type="textarea" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"></textarea>
+                                        </div>
                                     </div>
 
-                                    <div>
-                                        <label class="text-white dark:text-gray-200" for="emailAddress">Adresse e-mail</label>
-                                        <input id="emailAddress" type="email" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                                    <div class="flex justify-end mt-6">
+                                        <button @click="mainContent = 'recap'; "  class="px-6 py-2 leading-5 text-white transition-colors duration-200 transform bg-pink-500 rounded-md hover:bg-pink-700 focus:outline-none focus:bg-gray-600">Recevoir votre devis</button>
                                     </div>
-                                    <div>
-                                        <label class="text-white dark:text-gray-200" for="emailAddress">Numéro de telephone</label>
-                                        <input id="phonenumber" type="number" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                                </form>
+                            </section>
+                        </section>
+                        <section  v-show="mainContent === 'recap'" class="flex flex-wrap content-center h-screen">
+                            <div class='max-w-xs w-full bg-white shadow-md rounded-lg overflow-hidden mx-auto'>
+                                    <div class='h-5 w-full bg-gray-800'></div>
+                                    <div class='px-2 py-3'>
+                                        <div class='w-full text-center mb-3'>
+                                            <img class='w-24 h-24 inline-block object-cover rounded-full' alt='CompanyIcon' src='src/img/baies.png'>
+                                        </div>
+                                        <div class='w-full text-center border-t mb-1 pb-3'>
+                                            <h1 class="mt-2 text-xl font-bold"><span class="uppercase">{{nom}}</span>{{prenom}}</h1>
+                                            <p class="my-1 text-xs font-bold">{{email}}</p>
+                                            <p class="my-1 text-xs font-bold">{{tel}}</p>
+                                            <p class="my-1 text-xs font-bold">{{marque}}</p>
+                                        </div>
+                                        <table class="w-full border">
+                                            <thead>
+                                                <tr class="border-t-2 font-bold">
+                                                    <td class="p-2 border-r w-1/12">Quantité</td>
+                                                    <td class="p-2 border-r w-6/12">Item</td>
+                                                    <td class="p-2 text-right w-4/12">Total</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr class="border-t text-sm">
+                                                    <td class="p-1 pl-2 border-r">1</td>
+                                                    <td class="p-1 pl-2 border-r">Volets tryptiques de pare-brise</td>
+                                                    <td class="p-1 text-right"><small class="font-bolder text-lg pr-2 text-gray-300">€</small></td>
+                                                </tr>
+                                                <tr class="border-t text-sm">
+                                                    <td class="p-1 pl-2 border-r">{{countVoletBaie}}</td>
+                                                    <td class="p-1 pl-2 border-r">Volets de baie</td>
+                                                    <td class="p-1 text-right">{{calculateTotalPrice}}<small class="font-bolder text-lg pr-2 text-gray-300">€</small></td>
+                                                </tr>
+                                                <tr class="border-t text-sm">
+                                                    <td class="p-1 pl-2 border-r">{{ totalVolets.length }}</td>
+                                                    <td class="p-1 pl-2 border-r">Volets de dômes</td>
+                                                    <td class="p-1 text-right"><small class="font-bolder text-lg pr-2 text-gray-300">€</small></td>
+                                                </tr>
+                                            </tbody>
+                                            <thead>
+                                                <tr class="border-t-2 text-sm">
+                                                    <td class="p-2" colspan="2"></td>
+                                                    <td class="p-2 text-right border-r">Sub Total</td>
+                                                    <td class="p-1 text-right">{{calculateTotalPrice}}<small class="font-bolder text-lg pr-2 text-gray-300">€</small></td>
+                                                </tr>
+                                                <tr class="border-t-2 text-sm">
+                                                    <td class="p-2" colspan="2"></td>
+                                                    <td class="p-2 text-right border-r">Tax</td>
+                                                    <td class="p-1 text-right">{{calculateTotalPrice * 0.2}}<small class="font-bolder text-lg pr-2 text-gray-300">€</small></td>
+                                                </tr>
+                                                <tr class="border-t-2 text-sm">
+                                                    <td class="p-2" colspan="2"></td>
+                                                    <td class="p-2 text-right border-r font-bold">Total</td>
+                                                    <td class="p-1 text-right">{{(calculateTotalPrice * 0.2) + calculateTotalPrice}}<small class="font-bolder text-lg pr-2 text-gray-300">€</small></td>
+                                                </tr>
+                                            </thead>
+                                        </table>
                                     </div>
-
-                                    <div>
-                                        <label class="text-white dark:text-gray-200" for="password">Marque du camping car</label>
-                                        <input id="marque" type="text" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
-                                    </div>
-
-                                    <div>
-                                        <label class="text-white dark:text-gray-200" for="passwordConfirmation">Indiquez votre demande</label>
-                                        <textarea id="textarea" type="textarea" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"></textarea>
-                                    </div>
-                                    
-                                </div>
-
-                                <div class="flex justify-end mt-6">
-                                    <button class="px-6 py-2 leading-5 text-white transition-colors duration-200 transform bg-pink-500 rounded-md hover:bg-pink-700 focus:outline-none focus:bg-gray-600">Recevoir votre devis</button>
-                                </div>
-                            </form>
+                            </div>
                         </section>
                     </div>
                     <!-- panier -->
+                    <transition name="slide-fade">
                     <div v-show="mainContent !== 'start'" id="selection" class="col-span-4 flex flex-col justify-center align-middle">
                         <div class="card shadow-xl h-auto m-4">
                             <div class="card-header mx-auto">
@@ -266,6 +327,7 @@
                             </div>
                         </div>
                     </div>
+                </transition>
                 </div>
             </div>
         </div>
@@ -292,6 +354,12 @@
                 countVoletBaie: 0,
                 countVoletDeDome: 0,
                 countLanterneau: 0,
+                nom: "",
+                prenom: "",
+                email: "",
+                tel: "",
+                marque: "",
+                textarea: "",
                 productsCardContent: [
                     {
                         title: "Volets tryptiques de pare-brise",
